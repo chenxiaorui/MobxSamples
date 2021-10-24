@@ -1,5 +1,11 @@
-class TaskTableStore {
+import {observable} from 'mobx';
 
+class TaskTableStore {
+    constructor() {
+        this.taskConnt = 0;
+    }
+    
+    @observable taskConnt: number;
 }
 
-export { TaskTableStore };
+export default new TaskTableStore();
