@@ -1,0 +1,5 @@
+class TaskTableStore {
+
+}
+
+export { TaskTableStore };
