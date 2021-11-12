@@ -73,10 +73,7 @@ class TaskManager {
                 clearInterval(handle);
             }
         }, 100);
-
-
     }
-
 }
 
 export default new TaskManager();
