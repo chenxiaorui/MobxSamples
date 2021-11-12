@@ -1,7 +1,8 @@
 // import React from "react";
 import { observer } from "mobx-react";
 import { Table } from "antd";
-
+import { Task } from '../models/task';
+import { STATEMENT_OR_BLOCK_KEYS } from "@babel/types";
 
 const columns = [
     {
@@ -19,16 +20,22 @@ const columns = [
       dataIndex: 'progress',
       key: 'progress',
     },
-  ];
+];
 
-const TaskTable = () => {
-    const testDataSource = [{
-        index: 1,
-        status: 'Pending',
-        progress: 2
-    }];
+interface Props {
+    source: Task[];
+}
 
-    return <Table dataSource={testDataSource} columns={columns} />;
+const TaskTable = (props: Props) => {
+    const dataSource = props.source.map((task) => {
+        return {
+            index: task.index,
+            status: task.status,
+            progress: `${task.progress}%`,
+        }
+    });
+
+    return <Table dataSource={dataSource} columns={columns} />;
 };
 
-export default observer(TaskTable);
+export default TaskTable;
